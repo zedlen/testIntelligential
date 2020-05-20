@@ -4,7 +4,7 @@
   "description": "My test for Full Stack at Intelligential",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha \"**/*.test.js\""
   },
   "author": "Zedlen",
   "license": "ISC"
