@@ -28,7 +28,7 @@ module.exports = app => {
         });
       } else {
         res.send({ 
-            mensaje: 'Token no proveída.' 
+            mensaje: 'No token in headers.' 
         }).status(401);
       }
   });
