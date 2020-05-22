@@ -9,9 +9,8 @@ module.exports = app => {
 
   // middlewares
   app.use(express.json());
-  app.use((req, res, next) => {
-    // delete req.body.id;
-    next();
+  app.use(function(err, req, res, next) {    
+    res.status(500).json(err);
   });
   const protectedRoutes = express.Router(); 
   protectedRoutes.use((req, res, next) => {

@@ -31,8 +31,8 @@ module.exports = (sequelize, DataType) => {
   });
 
   Users.associate = (models) => {
-    Users.belongsTo(models.UserTypes)
-    Users.belongsToMany(models.Books, { through: models.BorrowedBooks });
+    Users.belongsTo(models.UserTypes, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' })
+    Users.belongsToMany(models.Books, { through: models.BorrowedBooks, foreignKey: {name: 'user_id', allowNull: false }, constraints: false });
   };
 
   return Users;

@@ -22,7 +22,7 @@ module.exports = (sequelize, DataType) => {
         }
       },
       status:{
-          type: DataType.ENUM(['IN_LOAN', 'RETURNED']),
+          type: DataType.ENUM(['IN_LOAN', 'RETURNED', 'PENDING', 'REJECTED']),
           allowNull: false,
           validate: {
             notEmpty: true
