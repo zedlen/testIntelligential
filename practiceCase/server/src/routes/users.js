@@ -99,7 +99,7 @@ module.exports = app => {
           permissions: JSON.stringify(result.UserType.permissions),
         }
         const token = jwt.sign(payload, app.get('privateKey'), {
-          expiresIn: 1440
+          expiresIn: 60 * 60 * 24
         });
         res.json({
           mensaje: 'Welcome',

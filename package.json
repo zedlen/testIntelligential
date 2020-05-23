@@ -7,5 +7,11 @@
     "test": "mocha \"**/*.test.js\""
   },
   "author": "Zedlen",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
+  }
 }

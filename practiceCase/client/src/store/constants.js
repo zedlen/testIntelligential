@@ -1,0 +1,3 @@
+export const USER_LOGGED = "USER_LOGGED"
+export const USER_PROFILE_LOADED = "USER_PROFILE_LOADED"
+export const USER_LOGOUT = "USER_LOGOUT"
