@@ -27,12 +27,27 @@ module.exports = (sequelize, DataType) => {
           validate: {
             notEmpty: true
           }
-      }
+      },
+      book_id:{
+        type: DataType.INTEGER,
+        allowNull: false,
+        unique: false,
+        validate: {
+          notEmpty: true
+        }
+      },
+      user_id:{
+        type: DataType.INTEGER,
+        allowNull: false,
+        unique: false,
+        validate: {
+          notEmpty: true
+        }
+      },
 
     });
   
     BorrowedBooks.associate = (models) => {
-        
     };
   
     return BorrowedBooks;

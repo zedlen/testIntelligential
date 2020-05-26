@@ -40,6 +40,22 @@ module.exports = app => {
       });
   });
 
+  app.put('/books/:id', app.get('protectedRoutes'), (req, res) => {
+    Books.findOne({where: {id: req.params.id}})
+      .then(book => {
+        if(book !== null){          
+          book.update(req.body).then(()=>{
+            res.sendStatus(204)
+          })
+        } else {
+          res.status(404).json({message:'nook  not found'})
+        }
+      })
+      .catch(error => {
+        res.status(412).json({msg: error.message});
+      });
+  });
+
   app.post('/books', app.get('protectedRoutes'), (req, res) => {      
     Books.create(req.body)
       .then(result => res.json(result))

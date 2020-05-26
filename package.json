@@ -4,7 +4,8 @@
   "description": "My test for Full Stack at Intelligential",
   "main": "index.js",
   "scripts": {
-    "test": "mocha \"**/*.test.js\""
+    "test": "mocha \"**/*.test.js\" --exclude \"**/node_modules/**\"",
+    "run:practice": "sh startPractice.sh"
   },
   "author": "Zedlen",
   "license": "ISC",

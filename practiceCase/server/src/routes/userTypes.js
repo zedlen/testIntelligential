@@ -30,6 +30,24 @@ module.exports = app => {
       res.status(412).json({msg: error.message});
     });
   });
+
+  app.put('/userTypes/:id', app.get('protectedRoutes'), (req, res) => {
+    UserTypes.findOne({where:{id:req.params.id}}, {      
+    })
+    .then(result => {
+      console.log(result)
+      if (result !== null) {
+        result.update(req.body).then(()=>{
+          res.sendStatus(204)
+        })         
+      } else {
+        res.status(404).json({error: 'User not found'})
+      }       
+    })
+    .catch(error => {
+      res.status(412).json({msg: error.message});
+    });
+  });
   
 
   app.delete('/userTypes/:id', app.get('protectedRoutes'), (req, res) => {

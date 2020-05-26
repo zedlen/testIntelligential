@@ -18,8 +18,7 @@ export const NavBarHolder = styled.nav`
     font-size: 17px;
     cursor: pointer;
     &.active {
-      background-color: #9b0063;
-      color: black;
+      background-color: #9b0063;      
     }
     &:hover {
       background-color: #ddd;

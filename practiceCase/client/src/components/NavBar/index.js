@@ -13,16 +13,21 @@ const navItems ={
         route: '/users',
         name: 'Usuarios'
     },
+    loans: {
+        route: '/loans',
+        name: 'Prestamos'
+    },
 }
 
 const NavBar = () => {    
     const userData = useSelector(state=>state.user) 
-    const dispatch = useDispatch()   
+    const dispatch = useDispatch()    
     return(
         <NavBarHolder>
             {userData.permissions && Object.keys(userData.permissions).map((item)=>                
-                <NavLink key={item} to={navItems[item].route} activeClassName='active'>{navItems[item].name}</NavLink>                         
+                <NavLink key={item} to={navItems[item].route} activeClassName='active'>{navItems[item].name}</NavLink>                                         
             )}
+            <NavLink  to={'/profile'} activeClassName='active'>Perfil</NavLink>                         
             <LogOut onClick={()=>{dispatch(logOut())}} activeClassName='none'>
                 <NavLink to='/'>
                     Salir

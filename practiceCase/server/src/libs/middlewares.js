@@ -28,9 +28,9 @@ module.exports = app => {
           }
         });
       } else {
-        res.send({ 
+        res.status(401).send({ 
             mensaje: 'No token in headers.' 
-        }).status(401);
+        });
       }
   });
   app.set('protectedRoutes',protectedRoutes);

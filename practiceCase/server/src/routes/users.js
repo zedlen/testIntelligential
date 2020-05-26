@@ -4,6 +4,7 @@ module.exports = app => {
 
   const Users = app.db.models.Users;
   const UserTypes = app.db.models.UserTypes;
+  const Books = app.db.models.Books;
 
   app.get('/users', app.get('protectedRoutes'), (req, res) => {
     Users.findAll( {
@@ -59,10 +60,46 @@ module.exports = app => {
       });
   });
 
-  app.get('/profile', app.get('protectedRoutes'), (req, res) => {          
-    res.json({...req.decoded, permissions: JSON.parse(req.decoded.permissions)})
-    
+  app.get('/profile', app.get('protectedRoutes'), (req, res) => {   
+    Users.findOne({
+      where:{
+        id:req.decoded.id
+      },
+      include:[
+        Books,
+        UserTypes
+      ]
+    }).then(user=>{
+      if (user !== null) {
+        
+        res.json({
+          name: user.name,
+          email: user.email,
+          permissions: user.UserType.permissions,
+          books: user.Books,          
+        })
+      } else {
+        res.sendStatus(404)
+      }
+    })    
   });
+
+  app.put('/users/:id', app.get('protectedRoutes'), (req, res) => {
+    Users.findOne({where: {id: req.params.id}})
+      .then(user => {
+        if(user !== null){          
+          user.update(req.body).then(()=>{
+            res.sendStatus(204)
+          })
+        } else {
+          res.status(404).json({message:'user  not found'})
+        }
+      })
+      .catch(error => {
+        res.status(412).json({msg: error.message});
+      });
+  });
+
 
   app.get('/token/renew', app.get('protectedRoutes'), (req, res) => {      
     let payload = req.decoded

@@ -16,12 +16,13 @@ const Login = ({history}) => {
     const [password, setPassword]=useState(null)
     const dispathc = useDispatch()
     useEffect(() => {
-        dispathc(checkLogged(history))
+        if(userData.load){
+            dispathc(checkLogged(history))
+        }        
     })
     const makeLogin = (event) => {
         event.preventDefault();
-        event.stopPropagation();
-        console.log(userData)        
+        event.stopPropagation();        
         if (user && password ) {     
             dispathc(login(history,{user,password}))                               
         } else {
