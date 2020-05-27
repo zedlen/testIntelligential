@@ -62,7 +62,7 @@ pass:test123
 
 ## TODO
 
-- [ ] Add validations in backend
+- [x] Add validations in backend
 - [ ] Add error messages in frontend
 - [ ] Add a select component when creating a new user
 - [ ] Improve style
